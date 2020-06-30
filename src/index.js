@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ProductList from './components/ProductList'
+import Products from './pages/Products/'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductList />
+    <Products />
   </React.StrictMode>,
   document.getElementById('root')
 );
