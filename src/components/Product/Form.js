@@ -37,8 +37,11 @@ class ProductForm extends React.Component {
           onChange={this.handleInputChange}
           type="text"
           required
+          data-testid="form-product-input-name"
         />
-        <button type="submit">
+        <button 
+          type="submit"
+          data-testid="form-product-button">
           Adicionar produto
         </button>
       </form>

@@ -6,23 +6,7 @@ class Products extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [
-        {
-          name: 'Heineken'
-        },
-        {
-          name: 'Budweiser'
-        },
-        {
-          name: 'Eisenbahn'
-        },
-        {
-          name: 'Antarctica Original'
-        },
-        {
-          name: 'Bohemia'
-        }
-      ]
+      products: []
     }
   }
 
@@ -58,7 +42,7 @@ class Products extends React.Component {
 
         <ProductForm formSubmit={this.addProduct} />
 
-        <ul>
+        <ul data-testid="product-list">
           {products.map((product, index) => (
             <li key={index}>
               <ProductItem product={product} productRemove={this.removeProduct} />
