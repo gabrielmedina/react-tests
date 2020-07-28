@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import Products from './'
 
 describe('Testes para Produtos', () => {
-  it('Deve adicionar um novo produto na lista quando submeter o formulário', async () => {
+  it('Deve adicionar um novo produto na lista quando submeter o formulário', () => {
     render(<Products/>)
 
     const product = 'Heineken'
@@ -15,7 +15,7 @@ describe('Testes para Produtos', () => {
     expect(screen.getByText(product)).toBeInTheDocument()
   })
 
-  it('Deve remover o produto da lista quando o botão de remover produto for clicado', async () => {
+  it('Deve remover o produto da lista quando o botão de remover produto for clicado', () => {
     render(<Products/>)
 
     const product = 'Heineken'
