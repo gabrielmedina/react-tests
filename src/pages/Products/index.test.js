@@ -1,34 +1,29 @@
 import React from 'react'
-import { fireEvent, render, waitForElement } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import Products from './'
 
 describe('Testes para Produtos', () => {
   it('Deve adicionar um novo produto na lista quando submeter o formulário', async () => {
-    const { getByTestId, getByText } = render(<Products/>)
+    render(<Products/>)
 
     const product = 'Heineken'
     
-    const productName = await waitForElement(
-      () => getByTestId('form-product-input-name')
-    )
-    fireEvent.change(productName, { 
-      target: { value: product }
-    })
+    fireEvent.change(screen.getByTestId('form-product-input-name'), { target: { value: product } })
+    fireEvent.click(screen.getByTestId('form-product-button'))
 
-    const productBtn = await waitForElement(
-      () => getByTestId('form-product-button')
-    )
-    fireEvent.click(productBtn)
+    expect(screen.getByText(product)).toBeInTheDocument()
+  })
 
-    const productList = await waitForElement(
-      () => getByTestId('product-list')
-    )
+  it('Deve remover o produto da lista quando o botão de remover produto for clicado', async () => {
+    render(<Products/>)
+
+    const product = 'Heineken'
     
-    const liNode = await waitForElement(
-      () => getByText(product)
-    )
+    fireEvent.change(screen.getByTestId('form-product-input-name'), { target: { value: product } })
+    fireEvent.click(screen.getByTestId('form-product-button'))
+    fireEvent.click(screen.getByTestId('product-remove-button'))
 
-    expect(liNode).toBeInTheDocument()
+    expect(screen.getByTestId('product-list')).toBeEmpty()
   })
 })

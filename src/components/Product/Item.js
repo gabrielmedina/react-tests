@@ -13,6 +13,7 @@ class ProductItem extends React.Component {
         <h1>{product.name}</h1>
         <button 
           onClick={this.removeProduct}
+          data-testid="product-remove-button"
         >
           Remover produto
         </button>
