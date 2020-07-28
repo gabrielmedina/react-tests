@@ -9,8 +9,8 @@ describe('Testes para Produtos', () => {
 
     const product = 'Heineken'
     
-    fireEvent.change(screen.getByTestId('form-product-input-name'), { target: { value: product } })
-    fireEvent.click(screen.getByTestId('form-product-button'))
+    fireEvent.change(screen.getByTestId('product-input-name'), { target: { value: product } })
+    fireEvent.click(screen.getByTestId('product-add-button'))
 
     expect(screen.getByText(product)).toBeInTheDocument()
   })
@@ -20,8 +20,8 @@ describe('Testes para Produtos', () => {
 
     const product = 'Heineken'
     
-    fireEvent.change(screen.getByTestId('form-product-input-name'), { target: { value: product } })
-    fireEvent.click(screen.getByTestId('form-product-button'))
+    fireEvent.change(screen.getByTestId('product-input-name'), { target: { value: product } })
+    fireEvent.click(screen.getByTestId('product-add-button'))
     fireEvent.click(screen.getByTestId('product-remove-button'))
 
     expect(screen.getByTestId('product-list')).toBeEmpty()
