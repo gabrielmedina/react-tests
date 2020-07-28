@@ -1,10 +1,6 @@
 import React from 'react'
 
 class ProductItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   removeProduct = (product) => {
     this.props.productRemove(this.props.product.name)
   }

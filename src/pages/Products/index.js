@@ -17,9 +17,9 @@ class Products extends React.Component {
   }
 
   removeProduct = (name) => {
-    let products = this.state.products
+    const products = this.state.products
 
-    products.map((product, index) => {
+    products.forEach((product, index) => {
       if(product.name.indexOf(name) !== -1) {
         products.splice(index, 1)
 
