@@ -22,6 +22,9 @@ describe('Testes para Produtos', () => {
     
     fireEvent.change(screen.getByTestId('product-input-name'), { target: { value: product } })
     fireEvent.click(screen.getByTestId('product-add-button'))
+    
+    expect(screen.getByText(product)).toBeInTheDocument()
+
     fireEvent.click(screen.getByTestId('product-remove-button'))
 
     expect(screen.getByTestId('product-list')).toBeEmpty()
