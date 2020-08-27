@@ -16,7 +16,7 @@ export default function Products() {
     theProducts.forEach((product, index) => {
       if(product.name.indexOf(name) !== -1) {
         theProducts.splice(index, 1)
-        return setProducts(theProducts)
+        setProducts(theProducts)
       }
     })
   }
