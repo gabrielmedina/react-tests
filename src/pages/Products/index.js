@@ -1,57 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProductForm from '../../components/Product/Form'
 import ProductItem from '../../components/Product/Item'
 
-class Products extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: []
-    }
+export default function Products() {
+  const [products, setProducts] = useState([])
+
+
+  function addProduct(product) {
+    setProducts([ ...products, product ])
   }
 
-  addProduct = (product) => {
-    this.setState({
-      products: [ ...this.state.products, product ]
-    })
-  }
+  function removeProduct(name) {
+    const theProducts = [ ...products ]
 
-  removeProduct = (name) => {
-    const products = this.state.products
-
-    products.forEach((product, index) => {
+    theProducts.forEach((product, index) => {
       if(product.name.indexOf(name) !== -1) {
-        products.splice(index, 1)
-
-        this.setState({
-          products: products
-        })
+        theProducts.splice(index, 1)
+        return setProducts(theProducts)
       }
     })
   }
 
-  render() {
-    const { products } = this.state
-    products.reverse()
-    
-    return (
-      <section>
-        <header>
-          <h1>Products</h1>
-        </header>
+  return (
+    <section>
+      <header>
+        <h1>Products</h1>
+      </header>
 
-        <ProductForm formSubmit={this.addProduct} />
+      <ProductForm formSubmit={addProduct} />
 
-        <ul data-testid="product-list">
-          {products.map((product, index) => (
-            <li key={index}>
-              <ProductItem product={product} removeProduct={this.removeProduct} />
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+      <ul data-testid="product-list">
+        {products.map((product, index) => (
+          <li key={index}>
+            <ProductItem product={product} removeProduct={removeProduct} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
 }
-
-export default Products
