@@ -5,7 +5,6 @@ import ProductItem from '../../components/Product/Item'
 export default function Products() {
   const [products, setProducts] = useState([])
 
-
   function addProduct(product) {
     setProducts([ ...products, product ])
   }
