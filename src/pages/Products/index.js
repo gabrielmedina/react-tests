@@ -45,7 +45,7 @@ class Products extends React.Component {
         <ul data-testid="product-list">
           {products.map((product, index) => (
             <li key={index}>
-              <ProductItem product={product} productRemove={this.removeProduct} />
+              <ProductItem product={product} removeProduct={this.removeProduct} />
             </li>
           ))}
         </ul>
